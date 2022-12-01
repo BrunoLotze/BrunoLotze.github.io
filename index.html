@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ZIGGURAPH</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+
+<div class="logo">
+
+  <svg fill="currentColor" width="100%" height="100%" id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 874.57 824.5">
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <path d="M1.53,823.5L194.09,380.5h458.36l220.5,443H1.53Zm259.62-31.71h353.12v-187.53h-92.93v107.41h-167.26v-220.06h260.19v-80.12H261.14v380.29Z"/>
+      <path d="M652.14,381l220,442H2.29L194.42,381h457.73m-391.5,411.29h354.12v-188.53h-93.93v107.41h-166.26v-219.06h260.19v-81.12H260.64v381.29m392.12-412.29H193.76L.76,824H873.76l-221-444h0Zm-391.12,411.29V412h352.12v79.12H353.57v221.06h168.26v-107.41h91.93v186.53H261.64Z"/>
+    </g>
+    <g>
+      <polygon points="260.26 419.5 260.26 308.5 261.41 308.5 260.84 307.93 457.27 111.5 260.26 111.5 260.26 .5 614.26 .5 614.26 111.5 613.12 111.5 613.69 112.07 417.25 308.5 614.26 308.5 614.26 419.5 260.26 419.5"/>
+      <path d="M613.76,1V111h-1.85l1.07,1.07-195.23,195.23-1.71,1.71h197.72v110H260.76v-110h1.85l-1.07-1.07L456.77,112.71l1.71-1.71h-197.72V1h353m1-1H259.76V112h196.3l-195.93,195.93,.07,.07h-.44v112h355v-112h-196.3l195.93-195.93-.07-.07h.44V0h0Z"/>
+    </g>
+  </g>
+  </svg>
+
+</div>
+
+<footer class=".footer">
+  <span>&copy Direitos reservados para Zigguraph 2022.</span>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<div id="info" class="info">
+  
+  <p class="title">INFORMAÇÕES</p>
+  
+  <p>Nós somos Zigguraph.</p>
+  <p>O Ziggurate era uma construção babilônica que se revolvia ao redor da formação de costumes comerciais e religiosos, funcionando como o centro cultural de muitas eras. Nosso nome e princípios pagam homenagem a esta grande construção, unindo Ziggurate com a palavra "Graph" se referindo a Gráficos.</p>
+
+  <p>Focamos em manter o acesso a informação e data como algo garantido para todo o indivíduo que tomar parte no uso de nossa aplicação.</p>
+
+  <div id="closeinfo" onclick="CloseInfo();" class="close"><button>Fechar</button></div>
+</div>
+
+<div id="tuto" class="info">
+  
+  <p class="title">TUTORIAIS</p>
+  
+  <p>Esta feature estará aqui em breve!</p>
+
+  <div id="closeinfo" onclick="CloseTuto();" class="close"><button>Fechar</button></div>
+</div>
+
+<section style="display: flex; flex-wrap: wrap;">
+<div class="graphmom" id="graphmom">
+<div id="end"></div>
+</div>
+
+<div class="graphdad" id="graphdad">
+
+<div id="divorce"></div>
+</div>
+</section>
+
+<div class="controlbar">
+<div class="controlbuttons">
+<div class="btnholder1">
+<button onclick="OpenTuto();">
+  
+<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-question-circle" viewBox="0 0 16 16">
+  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+  <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
+</svg>
+
+</button>
+<div class="hover1">
+  TUTORIAL
+</div>
+</div>
+
+<div class="btnholder2">
+<button onclick="OpenInfo();">
+  
+<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+</svg>
+
+</button>
+
+<div class="hover2">
+  INFORMAÇÕES
+</div>
+</div>
+
+<label class="switch" onclick="Darkmode();">
+  <input type="checkbox" id="switch">
+  <span class="slider round"></span>
+</label>
+
+<!--
+<div class="btnholder3">
+<button>
+  
+
+<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-wrench-adjustable-circle" viewBox="0 0 16 16">
+  <path d="M12.496 8a4.491 4.491 0 0 1-1.703 3.526L9.497 8.5l2.959-1.11c.027.2.04.403.04.61Z"/>
+  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0Zm-1 0a7 7 0 1 0-13.202 3.249l1.988-1.657a4.5 4.5 0 0 1 7.537-4.623L7.497 6.5l1 2.5 1.333 3.11c-.56.251-1.18.39-1.833.39a4.49 4.49 0 0 1-1.592-.29L4.747 14.2A7 7 0 0 0 15 8Zm-8.295.139a.25.25 0 0 0-.288-.376l-1.5.5.159.474.808-.27-.595.894a.25.25 0 0 0 .287.376l.808-.27-.595.894a.25.25 0 0 0 .287.376l1.5-.5-.159-.474-.808.27.596-.894a.25.25 0 0 0-.288-.376l-.808.27.596-.894Z"/>
+</svg>
+
+
+</button>
+
+<div class="hover3">
+  MODO AVANÇADO
+</div>
+
+</div>
+-->
+
+</div>
+
+</div>
+
+<div class="controlmom">
+<div class="controlpannel">
+<button onclick="newGraph(); SaveGraph();" type="submit" name="Criar">Criar Novo</button>
+</div>
+</div>
+
+
+<script type="text/javascript">
+
+
+
+var GraphHandler = [];
+
+
+function newGraph(){
+
+  GraphHandler.push(getGraphID());
+
+  //sets form 
+  const form = document.createElement("form");
+  form.setAttribute('id', 'form' + GraphHandler.at(-1));
+  form.setAttribute('method','post');
+  form.setAttribute('onsubmit','return false');
+  form.setAttribute('class', 'formother');
+
+  //sets title
+/*  const titlebox = document.createElement("h2");
+  titlebox.setAttribute('class', 'title');
+  const title = document.createTextNode("Novo Gráfico");*/
+  
+  //creates first input
+  //input for the title
+  const input1 = document.createElement("input");
+  input1.setAttribute('type','text');
+  input1.setAttribute('class','type');
+  input1.setAttribute('id','TituloGraph' + GraphHandler.at(-1));
+  input1.setAttribute('onblur','setTitle(' + GraphHandler.at(-1) + ')');
+  input1.setAttribute('placeholder', 'Novo Gráfico');
+
+  //creates second input
+  //input for the title
+  const input2 = document.createElement("select");
+  input2.setAttribute('id','TipoGraph' + GraphHandler.at(-1));
+  input2.setAttribute('onblur','setType('+ GraphHandler.at(-1) +')');
+  input2.setAttribute('placeholder','Selecione o Tipo');
+  input2.setAttribute('required','');
+
+
+  //creates the select input
+  const op1 = document.createElement("option");
+  op1.appendChild(document.createTextNode("Area Chart"));
+  op1.setAttribute('value','area');
+  const op2 = document.createElement("option");
+  op2.appendChild(document.createTextNode("Bar Chart"));
+  op2.setAttribute('value','bar');
+  const op3 = document.createElement("option");
+  op3.appendChild(document.createTextNode("Doughnut Chart"));
+  op3.setAttribute('value','doughnut');
+  const op4 = document.createElement("option");
+  op4.appendChild(document.createTextNode("Line Chart"));
+  op4.setAttribute('value','line');
+  const op5 = document.createElement("option");
+  op5.appendChild(document.createTextNode("Pie Chart"));
+  op5.setAttribute('value','pie');
+  const op6 = document.createElement("option");
+  op6.appendChild(document.createTextNode("Polar Area Chart"));
+  op6.setAttribute('value','polarArea');
+  const op7 = document.createElement("option");
+  op7.appendChild(document.createTextNode("Radar Chart"));
+  op7.setAttribute('value', 'radar');
+  const op8 = document.createElement('option');
+  op8.appendChild(document.createTextNode("Scatter Chart"));
+  op8.setAttribute('value', 'scatter');
+  const placeh = document.createElement('option');
+  placeh.setAttribute('value','');
+  placeh.setAttribute('disabled','');
+  placeh.setAttribute('selected','');
+  placeh.appendChild(document.createTextNode("Selecione uma Opção"));
+
+  input2.appendChild(placeh);
+  input2.appendChild(op2);
+  input2.appendChild(op3);
+  input2.appendChild(op4);
+  input2.appendChild(op5);
+  input2.appendChild(op6);
+  input2.appendChild(op7);
+  input2.appendChild(op8);
+
+
+  const colmom = document.createElement('div');
+  colmom.setAttribute('id', 'colmom' + GraphHandler.at(-1));
+  colmom.setAttribute('class','colmom');
+  colmom.setAttribute('focusable','false');
+  colmom.setAttribute('tabIndex','-1');
+  const createcol = document.createElement('button');
+  createcol.setAttribute('id','ColCreator' + GraphHandler.at(-1));
+  createcol.setAttribute('name','Criar_Coluna');
+  createcol.setAttribute('class','createcol');
+  createcol.setAttribute('onclick','CreateCol(' + GraphHandler.at(-1) + ')');
+  const textbutton = document.createTextNode('+');
+
+  createcol.appendChild(textbutton);
+
+  //apending everything 
+
+  const buttons = document.createElement('div');
+  buttons.setAttribute('id', 'btnmom' + GraphHandler.at(-1));
+  buttons.setAttribute('class','btnmom');
+
+  const send = document.createElement("button");
+  send.setAttribute('type', 'submit');
+  send.setAttribute('onclick', 'GraphCreatorHandler(' + GraphHandler.at(-1) +')');
+  send.setAttribute('class','gerar');
+  send.appendChild(document.createTextNode('Gerar Gráfico'));
+
+  const delgraph = document.createElement("button"); 
+  delgraph.setAttribute('type', 'submit');
+  delgraph.setAttribute('onclick', 'deleteGraph('+ GraphHandler.at(-1) +')');
+  delgraph.setAttribute('class','del');
+  delgraph.appendChild(document.createTextNode('Apagar'));
+
+  buttons.appendChild(send);
+  buttons.appendChild(delgraph);
+
+  const hr = document.createElement('hr');
+  const hr2 = document.createElement('hr');
+
+  form.appendChild(input1);
+  form.appendChild(input2);
+  form.appendChild(createcol);
+  form.appendChild(hr);
+  form.appendChild(colmom);
+  form.appendChild(hr2)
+  form.appendChild(buttons);
+
+  const graphmom = document.getElementById('graphmom');
+  const endmom = document.getElementById('end');
+
+
+  //CREATING THE GRAPH
+  const divgraph = document.createElement('div');
+   divgraph.setAttribute('id', 'graphdiv' +  GraphHandler.at(-1));
+  divgraph.setAttribute('class', 'graphdiv');
+  const graph = document.createElement('canvas');
+  graph.setAttribute('id', 'Graph' + GraphHandler.at(-1));
+
+  divgraph.appendChild(graph);
+
+
+
+  const graphdad = document.getElementById('graphdad');
+  const enddad = document.getElementById('divorce');
+
+  
+    graphmom.insertBefore(form, endmom);
+    graphdad.insertBefore(divgraph,enddad);
+    renderType(GraphHandler.at(-1));
+    renderTitle(GraphHandler.at(-1));
+  
+
+  }
+
+//Remember Graphs
+
+
+function RemakeGraph(counter){
+
+  //sets form 
+  const form = document.createElement("form");
+  form.setAttribute('id', 'form' + counter);
+  form.setAttribute('method','post');
+  form.setAttribute('onsubmit','return false');
+  form.setAttribute('class', 'formother');
+
+  //sets title
+ /* const titlebox = document.createElement("h2");
+  titlebox.setAttribute('class', 'title');
+  const title = document.createTextNode("Novo Gráfico");*/
+  
+  //creates first input
+  //input for the title
+  const input1 = document.createElement("input");
+  input1.setAttribute('type','text');
+  input1.setAttribute('class','type');
+  input1.setAttribute('id','TituloGraph' + counter);
+  input1.setAttribute('onblur','setTitle(' + counter + ')');
+  input1.setAttribute('placeholder', 'Novo Gráfico');
+
+  //creates second input
+  //input for the title
+  const input2 = document.createElement("select");
+  input2.setAttribute('id','TipoGraph' + counter);
+  input2.setAttribute('onblur','setType('+ counter +')');
+  input2.setAttribute('placeholder','Selecione o Tipo');
+  input2.setAttribute('required','');
+
+
+  //creates the select input
+  const op1 = document.createElement("option");
+  op1.appendChild(document.createTextNode("Area Chart"));
+  op1.setAttribute('value','area');
+  const op2 = document.createElement("option");
+  op2.appendChild(document.createTextNode("Bar Chart"));
+  op2.setAttribute('value','bar');
+  const op3 = document.createElement("option");
+  op3.appendChild(document.createTextNode("Doughnut Chart"));
+  op3.setAttribute('value','doughnut');
+  const op4 = document.createElement("option");
+  op4.appendChild(document.createTextNode("Line Chart"));
+  op4.setAttribute('value','line');
+  const op5 = document.createElement("option");
+  op5.appendChild(document.createTextNode("Pie Chart"));
+  op5.setAttribute('value','pie');
+  const op6 = document.createElement("option");
+  op6.appendChild(document.createTextNode("Polar Area Chart"));
+  op6.setAttribute('value','polarArea');
+  const op7 = document.createElement("option");
+  op7.appendChild(document.createTextNode("Radar Chart"));
+  op7.setAttribute('value', 'radar');
+  const op8 = document.createElement('option');
+  op8.appendChild(document.createTextNode("Scatter Chart"));
+  op8.setAttribute('value', 'scatter');
+  const placeh = document.createElement('option');
+  placeh.setAttribute('value','');
+  placeh.setAttribute('disabled','');
+  placeh.setAttribute('selected','');
+  placeh.appendChild(document.createTextNode("Selecione uma Opção"));
+
+  input2.appendChild(placeh);
+  input2.appendChild(op2);
+  input2.appendChild(op3);
+  input2.appendChild(op4);
+  input2.appendChild(op5);
+  input2.appendChild(op6);
+  input2.appendChild(op7);
+  input2.appendChild(op8);
+
+
+  const colmom = document.createElement('div');
+  colmom.setAttribute('id', 'colmom' + counter);
+  colmom.setAttribute('class','colmom');
+  colmom.setAttribute('focusable','false');
+  colmom.setAttribute('tabIndex','-1');
+  const createcol = document.createElement('button');
+  createcol.setAttribute('id','ColCreator' + counter);
+  createcol.setAttribute('name','Criar_Coluna');
+  createcol.setAttribute('class','createcol');
+  createcol.setAttribute('onclick','CreateCol(' + counter + ')');
+  const textbutton = document.createTextNode('+');
+
+  createcol.appendChild(textbutton);
+
+  //apending everything 
+
+  const buttons = document.createElement('div');
+  buttons.setAttribute('id', 'btnmom' + counter);
+  buttons.setAttribute('class','btnmom');
+
+  const send = document.createElement("button");
+  send.setAttribute('type', 'submit');
+  send.setAttribute('onclick', 'GraphCreatorHandler(' + counter +')');
+  send.setAttribute('class','gerar');
+  send.appendChild(document.createTextNode('Gerar Gráfico'));
+
+  const delgraph = document.createElement("button"); 
+  delgraph.setAttribute('type', 'submit');
+  delgraph.setAttribute('onclick', 'deleteGraph('+ counter +')');
+  delgraph.setAttribute('class','del');
+  delgraph.appendChild(document.createTextNode('Apagar'));
+
+  buttons.appendChild(send);
+  buttons.appendChild(delgraph);
+
+  const hr = document.createElement('hr');
+  const hr2 = document.createElement('hr');
+
+  form.appendChild(input1);
+  form.appendChild(input2);
+  form.appendChild(createcol);
+  form.appendChild(hr);
+  form.appendChild(colmom);
+  form.appendChild(hr2)
+  form.appendChild(buttons);
+
+  const graphmom = document.getElementById('graphmom');
+  const endmom = document.getElementById('end');
+
+
+  //CREATING THE GRAPH
+  const divgraph = document.createElement('div');
+  divgraph.setAttribute('id', 'graphdiv' + counter);
+  divgraph.setAttribute('class', 'graphdiv');
+  const graph = document.createElement('canvas');
+  graph.setAttribute('id', 'Graph'+ counter);
+
+  divgraph.appendChild(graph);
+
+
+
+  const graphdad = document.getElementById('graphdad');
+  const enddad = document.getElementById('divorce');
+
+  
+    graphmom.insertBefore(form, endmom);
+    graphdad.insertBefore(divgraph,enddad);
+    renderType(counter);
+    renderTitle(counter);
+    RememberCol(counter);
+
+}
+
+
+
+function ColCounter(counter){
+
+  var id = Math.floor(1000 + Math.random() * 9000);
+
+  if (localStorage.getItem('ColCount' + counter) == null) {
+
+
+    localStorage.setItem('ColCount' + counter, id);
+    return id;
+
+  }else{
+
+    var a = localStorage.getItem('ColCount' + counter);
+    const old_id = a.split('x');
+
+    const isMatch = old_id.includes(id);
+ 
+    if (isMatch == true) {
+     d = id - 1;
+      old_id.push(id);
+      const b = old_id.join('x');
+      localStorage.setItem('ColCount' + counter, b);
+
+      return id;
+
+    }else{
+
+      old_id.push(id);
+      const b = old_id.join('x');
+      localStorage.setItem('ColCount' + counter, b);
+      return id;
+    }
+
+  }
+}
+
+function RememberCol(counter){
+
+
+  var a = localStorage.getItem('ColCount' + counter);
+
+  if (a == null) {
+
+    return null;
+
+  }else{
+
+  const colnumb = a.split('x');
+  const newarr = colnumb.filter((a) => a);
+
+  for (x of newarr) {
+
+    CreateColCount(counter,x);
+    renderLabelX(counter,x);
+    renderDataset(counter,x);
+    
+  }
+
+  }
+
+
+
+}
+
+function CreateCol(counter){
+
+  var count = ColCounter(counter); 
+
+  //box1
+
+  const box1 = document.createElement("div");
+  box1.setAttribute('id', 'ColFather' + counter + 'a' + count);
+  box1.setAttribute('class', 'ColFather');
+  const input3 = document.createElement("input");
+  input3.setAttribute('type', 'text');
+  input3.setAttribute('class','type2');
+  input3.setAttribute('id', 'LabelsX' + counter + 'a' + count);
+  input3.setAttribute('onblur','setLabelX(' + counter + ',' + count + ')');
+  input3.setAttribute('placeholder', 'Nova Coluna');
+  box1.appendChild(input3);
+  //box2
+
+
+  const box2 = document.createElement("div");
+  box2.setAttribute('id', 'ColUncle' + counter + 'a' + count);
+  box2.setAttribute('class', 'ColUncle');
+  const input4 = document.createElement("textarea");
+  input4.setAttribute('id', 'Datasets' + counter + 'a' + count);
+  input4.setAttribute('onblur', 'setDataset(' + counter + ',' + count + ')');
+  input4.setAttribute('placeholder', 'Insira os dados');
+
+
+  const deletecol = document.createElement('button');
+  deletecol.setAttribute('id','ColDelete' + counter);
+  deletecol.setAttribute('name','Deletar_Coluna');
+  deletecol.setAttribute('onclick','DeleteCol(' + counter + ',' + count +')');
+  const textbutton2 = document.createTextNode('X');
+  deletecol.appendChild(textbutton2);
+
+
+  box2.appendChild(input4);
+  box2.appendChild(deletecol);
+
+  const boxmom = document.createElement('div');
+  boxmom.setAttribute('class','colbox');
+  boxmom.setAttribute('id','colbox' + counter + 'a' + count);
+  boxmom.appendChild(box1);
+  boxmom.appendChild(box2);
+
+  //place to insert
+  const form = document.getElementById('colmom' + counter);
+
+  form.appendChild(boxmom);
+}
+
+function CreateColCount(counter, count){ 
+
+  //box1
+
+  const box1 = document.createElement("div");
+  box1.setAttribute('id', 'ColFather' + counter + 'a' + count);
+  box1.setAttribute('class', 'ColFather');
+  const input3 = document.createElement("input");
+  input3.setAttribute('type', 'text');
+  input3.setAttribute('class','type2');
+  input3.setAttribute('id', 'LabelsX' + counter + 'a' + count);
+  input3.setAttribute('onblur','setLabelX(' + counter + ',' + count + ')');
+  input3.setAttribute('placeholder', 'Nova Coluna');
+  box1.appendChild(input3);
+  //box2
+
+  const box2 = document.createElement("div");
+  box2.setAttribute('id', 'ColUncle' + counter + 'a' + count);
+  box2.setAttribute('class', 'ColUncle');
+  const input4 = document.createElement("textarea");
+  input4.setAttribute('id', 'Datasets' + counter + 'a' + count);
+  input4.setAttribute('onblur', 'setDataset(' + counter + ',' + count + ')');
+  input4.setAttribute('placeholder', 'Insira os dados');
+
+
+  const deletecol = document.createElement('button');
+  deletecol.setAttribute('id','ColDelete' + counter);
+  deletecol.setAttribute('name','Deletar_Coluna');
+  deletecol.setAttribute('onclick','DeleteCol(' + counter + ',' + count +')');
+  const textbutton2 = document.createTextNode('X');
+  deletecol.appendChild(textbutton2);
+
+
+  box2.appendChild(input4);
+  box2.appendChild(deletecol);
+
+  const boxmom = document.createElement('div');
+  boxmom.setAttribute('class','colbox');
+  boxmom.setAttribute('id','colbox' + counter + 'a' + count);
+  boxmom.appendChild(box1);
+  boxmom.appendChild(box2);
+
+  //place to insert
+  const form = document.getElementById('colmom' + counter);
+
+  form.appendChild(boxmom);
+}
+
+function DeleteCol(counter, count){
+
+  var deleted = document.getElementById('colbox' + counter + 'a' + count);
+  
+  deleted.remove();
+
+  const a = localStorage.getItem('ColCount' + counter);
+  const b = a.replace(count, '');
+  localStorage.setItem('ColCount' + counter, b);
+
+  localStorage.removeItem('Cookie_LabelX' + counter + 'a' + count);
+  localStorage.removeItem('Cookie_Dataset' + counter + 'a' + count);
+
+}
+
+
+function SaveGraph(){
+  const graphjoined = GraphHandler.join('x');
+  localStorage.setItem('GraphIds', graphjoined);
+}
+
+function GraphHandlerX(){
+
+  if (localStorage.getItem('GraphIds') == null) {
+    alert('empty handler');
+  }else{
+
+    var pushed = localStorage.getItem('GraphIds');
+    pushed.split('x');
+
+    GraphHandler.push(pushed);
+  }
+
+}
+
+
+function getGraphID(){
+ 
+
+  var id = Math.floor(1000 + Math.random() * 9000);
+
+  if (localStorage.getItem('GraphIds') == null) {
+
+    return id;
+
+  }else{
+
+    var old_id = localStorage.getItem('GraphIds');
+    old_id.split('x');
+
+    const isMatch = old_id.includes(id);
+
+    if (isMatch == true) {
+
+      return id = id - 1;
+
+    }else{
+
+      return id;
+    }
+
+  }
+}
+
+function rememberGraph(){
+ 
+  const graphs = localStorage.getItem('GraphIds');
+  const lefilter = graphs.split('x');
+
+  const newarr = lefilter.filter((a) => a);
+
+  GraphHandlerX();
+
+  for(x of newarr){
+    RemakeGraph(x);
+
+  }
+
+   const check = document.getElementById('switch');
+
+  if (check.checked == true) {
+    Darkmode();
+  }
+}
+
+
+//DeleteGraphs
+
+function deleteGraph(counter) {
+
+
+  var deleted = document.getElementById('form' + counter);
+  var deletedgraph = document.getElementById('graphdiv' + counter);
+	localStorage.setItem('Graphs', localStorage.getItem('Graphs') - 1);
+  localStorage.removeItem('Cookie_TipoGraph' + counter);
+  localStorage.removeItem('Cookie_Dataset' + counter);
+  localStorage.removeItem('Cookie_LabelX' + counter);
+  localStorage.removeItem('Cookie_TituloGraph' + counter);
+  deleted.remove();
+  deletedgraph.remove();
+  const a = localStorage.getItem('GraphIds');
+  const b = a.replace(counter, '');
+  localStorage.setItem('GraphIds', b);
+
+}
+
+//Print BETA
+
+function printer() {
+	window.print();
+}
+
+
+//TitleFunctions
+
+function setTitle(counter){
+    const titler = document.getElementById('TituloGraph' + counter).value;
+
+    localStorage.setItem("Cookie_TituloGraph" + counter, titler);
+}
+
+function getTitle(counter){
+    if(localStorage.getItem('Cookie_TituloGraph' + counter) == null){
+      return "";
+    }else{
+      return localStorage.getItem("Cookie_TituloGraph" + counter);
+    }
+}
+
+//Inserts title inside of the Label but also inserts it inside of the Graph
+function renderTitle(counter){
+    const title = document.getElementById('TituloGraph' + counter);
+    title.value = getTitle(counter);
+}
+
+//SelectFunctions
+
+
+function setType(counter){
+    const type = document.getElementById('TipoGraph' + counter).value; 
+    localStorage.setItem('Cookie_TipoGraph' + counter, type);
+}
+
+function getType(counter){
+  
+  if (localStorage.getItem("Cookie_TipoGraph" + counter) == null) {
+
+    return '';
+
+  }else{
+  return localStorage.getItem("Cookie_TipoGraph" + counter);
+  }
+
+}
+
+function renderType(counter){
+  const type = document.getElementById('TipoGraph' + counter);
+  type.value = getType(counter);
+}
+
+
+//LabelsFunctions
+
+function setLabelX(counter, count){
+  const lablerX = document.getElementById('LabelsX' + counter + 'a' + count).value;
+  localStorage.setItem('Cookie_LabelX' + counter + 'a' + count, lablerX);
+}
+
+function getLabelX(counter, count){
+  if (localStorage.getItem("Cookie_LabelX" + counter + 'a' + count) == null) {
+
+    return '';
+
+  }else{
+  return localStorage.getItem("Cookie_LabelX" + counter + 'a' + count);
+  }
+}
+
+function renderLabelX(counter, count){
+  const lablerX = document.getElementById('LabelsX' + counter + 'a' + count);
+  lablerX.value = getLabelX(counter, count);
+
+}
+
+//DataSetsFunctions
+
+function setDataset(counter, count){
+  const dataseter = document.getElementById('Datasets' + counter + 'a' + count).value;
+  localStorage.setItem('Cookie_Dataset' + counter + 'a' + count, dataseter);
+
+}
+
+function getDataset(counter, count){
+  if (localStorage.getItem('Cookie_Dataset' + counter + 'a' + count) == null) {
+
+    return '';
+
+  }else{
+    return localStorage.getItem('Cookie_Dataset' + counter + 'a' + count);
+  }
+}
+
+function renderDataset(counter, count){
+  const dataseter = document.getElementById('Datasets' + counter + 'a' + count);
+  dataseter.value = getDataset(counter,count);
+}
+
+function getAllLabelXValues(counter){
+
+  var a = localStorage.getItem('ColCount' + counter);
+  var ad = a.split('x');
+  var c = [];
+  
+  for (x of ad){
+    let b = getLabelX(counter, x);
+
+    c.push(b);
+  }
+
+  return c;
+
+}
+
+function getAllDataSets(counter){
+
+  var a = localStorage.getItem('ColCount' + counter);
+  var ad = a.split('x');
+  var c = []
+
+  for(x of ad){
+    let b = {};
+    b = getDataset(counter, x);
+
+    c.push(b);
+  }  
+
+  return c;
+};
+
+
+function GraphCreatorHandler(counter){
+  fillGraph(counter);
+}
+
+
+function GraphChart(counter){
+  const a = document.getElementById('Graph' + counter);
+  return a;
+}
+
+/*
+function setGraphCookie(counter){
+
+  var config;
+  const graph = new Chart(
+
+      GraphChart(counter),
+      config
+
+    );
+
+  localStorage.setItem('IdGraph' + counter, JSON.stringify(graph));
+}
+
+function getGraphCookie(counter){
+  setGraphCookie(counter);
+
+  const a = localStorage.getItem('IdGraph' + counter);
+
+  if(a == null){
+    return null;
+  }else if(a == undefined){
+    return undefined;
+  }else{
+    return JSON.parse(a);
+  }
+
+}
+*/
+
+function checkChartExists(counter){
+  const chart = Chart.getChart('Graph' + counter);
+  return chart;
+}
+
+function fillGraph(counter){
+
+  
+  const title = getTitle(counter);
+  const l = getAllLabelXValues(counter);
+  const sets = getAllDataSets(counter);
+  const t = getType(counter);
+
+
+  const labels = l.filter((a) => a);
+  const dater = sets.filter((a) => a);
+
+  const color = [];
+
+  for (i = 0; i < labels.length; i++){
+    const r = Math.floor(Math.random() * 255);
+    const g = Math.floor(Math.random() * 255);
+    const b = Math.floor(Math.random() * 255);
+    color.push('rgba('+ r +', '+ g +', '+b+', 0.5)')
+  };
+
+
+  const data = {
+    labels: labels,
+    datasets: [{
+      label: title,
+      backgroundColor: color,
+      data: dater
+    }]
+  };
+
+  var config;
+
+  if (t == 'radar') {
+  
+  config = {
+    type: t,
+    data: data,
+    options: {
+      scales: {
+        r: {
+          min: 0
+        }
+      }
+    },
+
+  };
+
+  }else{
+
+  config = {
+    type: t,
+    data: data,
+    options: {
+      scales: {
+      }
+    },
+
+  };
+  }
+
+  checkChartExists(counter);
+
+  if (checkChartExists(counter) != null) {
+    checkChartExists(counter).destroy();
+  }
+
+   new Chart(
+
+        GraphChart(counter),
+        config
+
+      );
+
+}
+
+
+window.onload(rememberGraph());
+
+
+function Darkmode(){
+
+  const check = document.getElementById('switch');
+
+  if (check.checked == true) {
+
+ const all = document.querySelectorAll('div');
+
+  for (const a of all){
+    a.classList.add('darkmode');
+
+  }
+
+  const section = document.querySelectorAll('html');
+
+  for (const b of section){
+    b.classList.add('darkmode');
+
+  }
+
+  const form = document.querySelectorAll('form');
+
+  for (const c of form){
+    c.classList.add('darkmode');
+    c.classList.add('truedark');
+  }
+
+  const buttons = document.querySelectorAll('button');
+
+  for (const d of buttons){
+    d.classList.add('darkmode-buttons');
+  }
+
+  const select = document.querySelectorAll('select');
+
+  for (const e of select){
+    e.classList.add('darkmode');
+    e.classList.add('truedark');
+  }
+
+  const textarea = document.querySelectorAll('textarea');
+
+  for (const f of textarea){
+    f.classList.add('darkmode');
+  }
+
+
+  const z = document.querySelectorAll('.hover1');
+  const z1 = document.querySelectorAll('.hover2');
+  const z2 = document.querySelectorAll('.hover3');
+
+  z.classList.add('darkmode');
+  z1.classList.add('darkmode');
+  z2.classList.add('darkmode');
+
+  const foot = document.querySelectorAll('.footer');
+
+  foot.classList.add('darkmode');
+
+
+  }else{
+
+
+     const all = document.querySelectorAll('div');
+
+  for (const a of all){
+    a.classList.remove('darkmode');
+
+  }
+
+  const section = document.querySelectorAll('html');
+
+  for (const b of section){
+    b.classList.remove('darkmode');
+
+  }
+
+  const form = document.querySelectorAll('form');
+
+  for (const c of form){
+    c.classList.remove('darkmode');
+    c.classList.remove('truedark');
+  }
+
+  const buttons = document.querySelectorAll('button');
+
+  for (const d of buttons){
+    d.classList.remove('darkmode-buttons');
+  }
+
+  const select = document.querySelectorAll('select');
+
+  for (const e of select){
+    e.classList.remove('darkmode');
+    e.classList.remove('truedark');
+  }
+
+  const textarea = document.querySelectorAll('textarea');
+
+  for (const f of textarea){
+    f.classList.remove('darkmode');
+  }
+
+
+  const z = document.querySelectorAll('.hover1');
+  const z1 = document.querySelectorAll('.hover2');
+  const z2 = document.querySelectorAll('.hover3');
+
+  z.classList.remove('darkmode');
+  z1.classList.remove('darkmode');
+  z2.classList.remove('darkmode');
+
+  const foot = document.querySelectorAll('.footer');
+
+  foot.classList.remove('darkmode');
+
+  }
+
+}
+  function OpenInfo(){
+    const a = document.getElementById('info');
+
+    a.style.display = 'flex';
+  }
+
+    function CloseInfo(){
+    const a = document.getElementById('info');
+
+    a.style.display = 'none';
+  }
+
+
+  function OpenTuto(){
+    const a = document.getElementById('tuto');
+
+    a.style.display = 'flex';
+  }
+
+  function CloseTuto(){
+
+    const a = document.getElementById('tuto');
+
+    a.style.display = 'none';
+
+  }
+</script>
+
+
+
+
+
+</body>
+</html>
