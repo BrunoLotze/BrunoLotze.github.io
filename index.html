@@ -132,6 +132,15 @@
 </div>
 
 
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+
+
+
 <script type="text/javascript">
 
 
@@ -195,9 +204,6 @@ function newGraph(){
   const op7 = document.createElement("option");
   op7.appendChild(document.createTextNode("Radar Chart"));
   op7.setAttribute('value', 'radar');
-  const op8 = document.createElement('option');
-  op8.appendChild(document.createTextNode("Scatter Chart"));
-  op8.setAttribute('value', 'scatter');
   const placeh = document.createElement('option');
   placeh.setAttribute('value','');
   placeh.setAttribute('disabled','');
@@ -211,7 +217,6 @@ function newGraph(){
   input2.appendChild(op5);
   input2.appendChild(op6);
   input2.appendChild(op7);
-  input2.appendChild(op8);
 
 
   const colmom = document.createElement('div');
@@ -343,10 +348,7 @@ function RemakeGraph(counter){
   op6.setAttribute('value','polarArea');
   const op7 = document.createElement("option");
   op7.appendChild(document.createTextNode("Radar Chart"));
-  op7.setAttribute('value', 'radar');
-  const op8 = document.createElement('option');
-  op8.appendChild(document.createTextNode("Scatter Chart"));
-  op8.setAttribute('value', 'scatter');
+  op7.setAttribute('value', 'radar');;
   const placeh = document.createElement('option');
   placeh.setAttribute('value','');
   placeh.setAttribute('disabled','');
@@ -360,7 +362,6 @@ function RemakeGraph(counter){
   input2.appendChild(op5);
   input2.appendChild(op6);
   input2.appendChild(op7);
-  input2.appendChild(op8);
 
 
   const colmom = document.createElement('div');
@@ -702,7 +703,7 @@ function deleteGraph(counter) {
   deleted.remove();
   deletedgraph.remove();
   const a = localStorage.getItem('GraphIds');
-  const b = a.replace(counter, '');
+  const b = a.replace(counter, 'x');
   localStorage.setItem('GraphIds', b);
 
 }
@@ -904,18 +905,37 @@ function fillGraph(counter){
     const r = Math.floor(Math.random() * 255);
     const g = Math.floor(Math.random() * 255);
     const b = Math.floor(Math.random() * 255);
-    color.push('rgba('+ r +', '+ g +', '+b+', 0.5)')
+    color.push('rgba('+ r +', '+ g +', '+b+', 0.9)')
   };
 
 
-  const data = {
+  var data;
+
+  if (t == 'line') {
+
+  data = {
+    labels: labels,
+    datasets: [{
+      label: title,
+      backgroundColor: color[0],
+      borderColor: color[0],
+      data: dater
+    }]
+  };
+
+  }else{
+
+    data = {
     labels: labels,
     datasets: [{
       label: title,
       backgroundColor: color,
+      borderWidth: 2,
       data: dater
     }]
   };
+
+  }
 
   var config;
 
@@ -1113,6 +1133,11 @@ function Darkmode(){
   }
 </script>
 
+
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+  new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
 
 
 
