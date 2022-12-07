@@ -9,6 +9,16 @@ scrollbar-width: thin;
 
 font-size: 1vw;
 
+ -webkit-transition: background-color 0ms linear;
+    -ms-transition: background-color 0ms linear;
+    transition: background-color 0ms linear;
+
+}
+
+@mixin notran{
+   -webkit-transition: background-color 0ms linear;
+    -ms-transition: background-color 0ms linear;
+    transition: background-color 0ms linear;
 }
 
 @mixin border{
@@ -114,14 +124,15 @@ button:focus{
   margin-top: 5%;
 
   @include border;
+  @include notran;
 
   border-radius: 1rem;
   padding: 2%;
-  transition: 0.5s;
+  transition: transform 0.5s;
 }
 
 .formother:hover{
-  transition: 0.5s;
+  transition: transform 0.5s;
   transform: scale(1.02);
 }
 
@@ -179,11 +190,11 @@ button:focus{
 
   font-size: 150%;
 
-  transition: 0.5s;
+  transition: border 0.5s;
 }
 
 .type:focus {
-  transition: 0.5s;
+  transition: border 0.5s;
 
   @include border-bottom-blue;
 }
@@ -223,7 +234,8 @@ button:focus{
 
 button{
   cursor: pointer;
-  transition: 0.1s;
+
+  transition: transform 0.1s;
   -webkit-user-select: none; /* Safari */        
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10+/Edge */
@@ -234,7 +246,7 @@ button{
 button:active {
 
   transform: scale(0.95);
-  transition: 0.1s;
+  transition: transform 0.1s;
 
 }
 
@@ -257,13 +269,13 @@ button:focus{
 
   @include border-bottom;
 
-  transition: 0.5s;
+  transition: border 0.5s;
 }
 
 .type2:focus{
   @include border-bottom-blue;
 
-  transition: 0.5s;
+  transition: border 0.5s;
 }
 
 .btnmom{
@@ -306,14 +318,14 @@ textarea{
 
   border-radius:0.5rem;
   border: solid 2px rgba(53, 38, 255, 0);
-  transition: 0.5s;
+  transition: transform 0.5s;
 }
 
 textarea:focus{
   border: solid 2px rgba(53, 38, 255, 1);
   transform: scale(1.05);
   background-color: white;
-  transition: 0.5s;
+  transition: transform 0.5s;
 }
 
 select{
@@ -394,8 +406,10 @@ select:focus{
   }
 }
 
+
 .darkmode{
   *{
+
       background-color: rgba( 33, 32, 37 , 1.0);
       color: white;
 
@@ -738,6 +752,7 @@ input:checked + .slider:before {
   display: flex;
   position: absolute;
 }
+
 
 footer{
   z-index: 20;
